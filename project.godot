@@ -15,4 +15,4 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Hider Node/plugin.cfg", "res://addons/hider_node/plugin.cfg")
+enabled=PackedStringArray("res://addons/hider_node/plugin.cfg")
