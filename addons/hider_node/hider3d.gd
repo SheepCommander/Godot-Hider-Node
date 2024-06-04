@@ -4,7 +4,6 @@ class_name Hider3D
 
 const GROUP_NAME = "@Hider3D"
 const VISIBILITY_END_META : StringName = "PreviousVisibilityEndRange"
-const TRANSPARENCY_META : StringName = "PreviousTransparency"
 
 ## Hide sibling nodes when not looking at them
 @export var enabled := false
@@ -18,9 +17,8 @@ enum GAMESTART {
 	HideAll, ## Hide all sibling nodes & their children on game start
 	}
 ## Hider's hiding behavior
-@export var hide_mode : EDITOR = EDITOR.WireFrame
+@export var hide_mode : EDITOR = EDITOR.CompletelyInvisible
 enum EDITOR {
-	WireFrame, ## 3D nodes still show a wireframe
 	CompletelyInvisible, ## 3D nodes will be completely invisible
 	}
 
@@ -48,15 +46,10 @@ func _ready() -> void:
 func hide_nodes():
 	if not hidden: # Only run hides if not already hidden
 		match hide_mode:
-			EDITOR.WireFrame:
-				_hide_nodes_wireframe()
 			EDITOR.CompletelyInvisible:
 				_hide_nodes_invisible()
 	hidden = true
 
-
-func _hide_nodes_wireframe():
-	pass
 
 
 func _hide_nodes_invisible():
