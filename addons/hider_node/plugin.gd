@@ -33,23 +33,6 @@ func _on_selection_changed() -> void:
 			var hider_path := str(root.get_path_to(hider.get_parent()))+"/"
 			var selection_path := str(root.get_path_to(selected_node))
 			if hider_path in selection_path:
-				print("show")
-				hider # Show nodes if selection is inside
-	#for node : Node in selected_nodes:
-		#for hider : Hider3D in hiders:
-			#if not hider.enabled:
-				#continue
-			#if (str(root.get_path_to(hider.get_parent()))+"/") in 
-				#(str(root.get_path_to(node))+"/"):
-				# Enable hider if 
-				#enabled_hiders.append(hider)
-				#hiders.erase(hider)
-	#for hider in hiders:
-		#if not hider.active:
-			#continue
-		#hider.hide_nodes()
-		#hider.active = false
-
-	#for hider in enabled_hiders:
-		#hider.show_nodes()
-		#hider.active = true
+				hider.show_nodes() # Show if selected
+			else:
+				hider.hide_nodes() # Hide if not
