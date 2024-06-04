@@ -3,51 +3,57 @@ extends Node
 class_name Hider3D
 
 const GROUP_NAME = "@Hider3D"
+const VISIBILITY_END_META : StringName = "PreviousVisibilityEndRange"
+const TRANSPARENCY_META : StringName = "PreviousTransparency"
 
+## Hide sibling nodes when not looking at them
 @export var enabled := false
+var hidden := false
 
-enum GAMESTART {CurrentState, ShowAll, HideAll}
-enum EDITOR {WireFrame, CompletelyInvisible}
-## CurrentState: Leave nodes in their current state on game start
-## ShowAll: Show all sibling nodes & their children on game start
-## HideAll: Hide all sibling nodes & their children on game start
+## Hider behavior on game start.
 @export var on_game_start : GAMESTART = GAMESTART.CurrentState
-## WireFrame: 3D nodes still show a wireframe
-## CompletelyInvisible: 3D nodes will be completely invisible
+enum GAMESTART {
+	CurrentState, ## Leave nodes in their current state on game start
+	ShowAll, ## Show all sibling nodes & their children on game start
+	HideAll, ## Hide all sibling nodes & their children on game start
+	}
+## Hider's hiding behavior
 @export var hide_mode : EDITOR = EDITOR.WireFrame
+enum EDITOR {
+	WireFrame, ## 3D nodes still show a wireframe
+	CompletelyInvisible, ## 3D nodes will be completely invisible
+	}
 
 ## Do not hide node if it has this name
-@export var except_list_names : Array[String]
+@export var except_name : Array[String]
 
-
-var hiding := false
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		add_to_group(GROUP_NAME)
-		hiding = true
-		_hide_nodes()
+		if enabled:
+			hide_nodes()
+			hidden = true
 	else:
 		match on_game_start:
 			GAMESTART.CurrentState:
 				pass # Nothing
 			GAMESTART.ShowAll:
-				_show_nodes()
+				show_nodes()
 			GAMESTART.HideAll:
-				_hide_nodes()
+				hide_nodes()
 		queue_free()
 
 
-func _process(delta: float) -> void:
-	pass
-
-
-func _hide_nodes():
-	match hide_mode:
-		EDITOR.WireFrame:
-			_hide_nodes_wireframe()
-		EDITOR.CompletelyInvisible:
-			_hide_nodes_invisible()
+func hide_nodes():
+	if not hidden:
+		print("hide")
+		match hide_mode:
+			EDITOR.WireFrame:
+				_hide_nodes_wireframe()
+			EDITOR.CompletelyInvisible:
+				_hide_nodes_invisible()
+	hidden = true
 
 
 func _hide_nodes_wireframe():
@@ -55,8 +61,23 @@ func _hide_nodes_wireframe():
 
 
 func _hide_nodes_invisible():
-	pass
+	for sibling : Node in get_parent().get_children():
+		if sibling.name in except_name:
+			continue # Sibling is in the except list
+		
+		var instance : GeometryInstance3D = sibling as GeometryInstance3D
+		if instance != null:
+			instance.set_meta(VISIBILITY_END_META, float(instance.visibility_range_end))
+			print(instance.get_meta(VISIBILITY_END_META))
+			instance.visibility_range_end = 0.01
 
 
-func _show_nodes():
-	pass
+func show_nodes():
+	print("show")
+	hidden = false
+	for sibling : Node in get_parent().get_children():
+		var instance : GeometryInstance3D = sibling as GeometryInstance3D
+		if instance != null:
+			if instance.has_meta(VISIBILITY_END_META):
+				instance.visibility_range_end = instance.get_meta(VISIBILITY_END_META)
+				instance.remove_meta(VISIBILITY_END_META)
