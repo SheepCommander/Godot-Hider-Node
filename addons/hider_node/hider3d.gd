@@ -46,8 +46,7 @@ func _ready() -> void:
 
 
 func hide_nodes():
-	if not hidden:
-		print("hide")
+	if not hidden: # Only run hides if not already hidden
 		match hide_mode:
 			EDITOR.WireFrame:
 				_hide_nodes_wireframe()
@@ -68,12 +67,10 @@ func _hide_nodes_invisible():
 		var instance : GeometryInstance3D = sibling as GeometryInstance3D
 		if instance != null:
 			instance.set_meta(VISIBILITY_END_META, float(instance.visibility_range_end))
-			print(instance.get_meta(VISIBILITY_END_META))
 			instance.visibility_range_end = 0.01
 
 
 func show_nodes():
-	print("show")
 	hidden = false
 	for sibling : Node in get_parent().get_children():
 		var instance : GeometryInstance3D = sibling as GeometryInstance3D
