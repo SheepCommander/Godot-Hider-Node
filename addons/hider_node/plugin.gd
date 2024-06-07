@@ -33,6 +33,6 @@ func _on_selection_changed() -> void:
 			var hider_path := str(root.get_path_to(hider.get_parent()))+"/"
 			var selection_path := str(root.get_path_to(selected_node))
 			if hider_path in selection_path:
-				hider.show_nodes() # Show if selected
+				hider.show_nodes() # Show if a sibling of [hider] is selected
 			else:
 				hider.hide_nodes() # Hide if not
