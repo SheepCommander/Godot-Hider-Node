@@ -30,9 +30,9 @@ func _on_selection_changed() -> void:
 		for hider : Hider3D in hiders:
 			if not hider.enabled:
 				continue # This hider is disabled. Skip.
-			var hider_path := str(root.get_path_to(hider.get_parent()))+"/"
+			var hider_parent_path := str(root.get_path_to(hider.get_parent()))+"/"
 			var selection_path := str(root.get_path_to(selected_node))
-			if hider_path in selection_path:
-				hider.show_nodes() # Show if a sibling of [hider] is selected
+			if selection_path.begins_with(hider_parent_path):
+				hider.show_nodes() # Show if [selected_node] is a sibling of [hider]
 			else:
 				hider.hide_nodes() # Hide if not
