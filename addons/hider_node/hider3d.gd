@@ -64,10 +64,10 @@ func _hide_nodes_invisible():
 
 
 func show_nodes():
-	hidden = false
 	for sibling : Node in get_parent().get_children():
 		var instance : GeometryInstance3D = sibling as GeometryInstance3D
 		if instance != null:
 			if instance.has_meta(VISIBILITY_END_META):
 				instance.visibility_range_end = instance.get_meta(VISIBILITY_END_META)
 				instance.remove_meta(VISIBILITY_END_META)
+	hidden = false
