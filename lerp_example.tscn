@@ -1,0 +1,145 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmguntb6j2rek"]
+
+[ext_resource type="Script" path="res://lerp_example_manager.gd" id="1_btqmx"]
+[ext_resource type="Texture2D" uid="uid://d2to634msl7n3" path="res://addons/hider_node/hider.png" id="2_8fm3p"]
+[ext_resource type="Script" path="res://lerp.gd" id="3_8rv5q"]
+
+[sub_resource type="Gradient" id="Gradient_hn8af"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ncix"]
+gradient = SubResource("Gradient_hn8af")
+
+[node name="LerpExample" type="Node"]
+script = ExtResource("1_btqmx")
+rate = 6.0
+
+[node name="Start" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, 2)
+scale = Vector2(0.47878, 0.623506)
+texture = ExtResource("2_8fm3p")
+
+[node name="Target" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1906, 1062)
+scale = Vector2(0.22923, 0.38876)
+texture = ExtResource("2_8fm3p")
+
+[node name="lerp10" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(59, 111, 37, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 10
+
+[node name="lerp20" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(125, 136, 129, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 20
+
+[node name="lerp30" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(111, 161, 126, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 30
+
+[node name="lerp40" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(239, 233, 60, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 40
+
+[node name="lerp50" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(239, 65, 172, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 50
+
+[node name="lerp60" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(232, 153, 181, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 60
+
+[node name="lerp70" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(229, 225, 33, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 70
+
+[node name="lerp80" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(50, 166, 21, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 80
+
+[node name="lerp90" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(131, 132, 44, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 90
+
+[node name="lerp100" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(65, 90, 172, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 100
+
+[node name="lerp110" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(134, 115, 26, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 110
+
+[node name="lerp120" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(68, 154, 143, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 120
+
+[node name="lerp130" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(58, 108, 35, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 130
+
+[node name="lerp140" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(10, 195, 127, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
+fps = 140
+
+[node name="lerp0" type="Sprite2D" parent="."]
+process_mode = 4
+self_modulate = Color(38, 165, 199, 1)
+position = Vector2(1906, 1061.99)
+texture = SubResource("GradientTexture2D_8ncix")
+script = ExtResource("3_8rv5q")
